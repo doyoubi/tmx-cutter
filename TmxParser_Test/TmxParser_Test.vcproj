@@ -57,7 +57,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TmxParserd.lib"
+				AdditionalDependencies="TmxParser.lib"
 				AdditionalLibraryDirectories="$(SolutionDir)lib\"
 				GenerateDebugInformation="true"
 				TargetMachine="1"

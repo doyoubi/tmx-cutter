@@ -1,3 +1,14 @@
+tmx-cutter
+==========
+In tile map editor http://www.mapeditor.org/ , to build physic world, we usually use object layers.
+But sometimes, it's more convenient to tag a whole tile to be conlidable or not just using a seperate invisible layer.
+Since adding every tile to physics world one by one will lead to bad performance for collision detection,
+I want to group some tiles together before send them to physicsl world.
+
+This tool will only support orthogonal viewing map. It will accept a tmx file and produce larger rectangle which can be used as AABB in physics world.
+
+This tools is based on tmx-parser https://github.com/soryy708/tmx-parser
+
 tmx-parser
 ==========
 

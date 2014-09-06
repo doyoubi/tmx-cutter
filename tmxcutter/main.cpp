@@ -6,12 +6,18 @@
 #include <iostream>
 #include <vector>
 #include "debug.h"
+#include "array_2d.h"
+#include "point2d.h"
+#include "cut.h"
 
 using std::shared_ptr;
 using std::string;
 using std::vector;
 using std::cout;
 using std::endl;
+
+typedef dyb::point2d<int> ivec2;
+typedef dyb::array2d<char> rect;
 
 // The first argument is tmx file, the second one is layer name
 int main(int args, char * argv[])
@@ -52,17 +58,20 @@ int main(int args, char * argv[])
     });
 
     // output
+    rect input(layer->GetWidth(), layer->GetHeight());
     for (int y = 0; y < layer->GetHeight(); ++y)
     {
         for (int x = 0; x < layer->GetWidth(); ++x)
         {
             unsigned int id = layer->GetTileId(x, y);
             if (find(begin(wallTileIDs), end(wallTileIDs), id) != end(wallTileIDs))
-                cout << '0';
-            else cout << '.';
+                input[x][y] = '0';
+            else input[x][y] = '.';
         }
-        cout << endl;
     }
+
+    rect result = dyb::cut(input);
+    print(result);
 
     return 0;
 }

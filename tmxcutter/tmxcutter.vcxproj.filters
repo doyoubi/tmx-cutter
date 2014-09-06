@@ -18,6 +18,15 @@
     <ClInclude Include="debug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="array_2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="point2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

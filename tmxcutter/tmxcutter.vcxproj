@@ -82,6 +82,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="array_2d.h" />
+    <ClInclude Include="cut.h" />
+    <ClInclude Include="point2d.h" />
     <ClInclude Include="debug.h" />
   </ItemGroup>
   <ItemGroup>

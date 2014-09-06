@@ -2,6 +2,7 @@
 #define DYB_DEBUG
 
 #include <iostream>
+#include "point2d.h"
 
 namespace dyb
 {
@@ -9,6 +10,11 @@ namespace dyb
     using std::cout;
     using std::cerr;
 
+    
+    inline void echoivec2(const point2d<int> & p)
+    {
+        cout << p.x << ' ' << p.y << endl;
+    }
 
     template<class MSG>
     void debugCheck(bool checkedExpression,

@@ -2,6 +2,7 @@
 #define DYB_CUT
 
 #include <iostream>
+#include <vector>
 #include "point2d.h"
 #include "array_2d.h"
 #include "debug.h"
@@ -37,11 +38,26 @@ namespace dyb
             r[j][i] = to_fill;
     }
 
-    rect cut(rect & input)
+    struct TileRect
+    {
+        // point (0,0) is in the left top of screen, just like the coordinate in tile map
+        // 1 unit means one tile
+        ivec2 leftTop, rightBottom;
+    };
+
+    struct PixelRect
+    {
+        // 1 unit means one pixel
+        ivec2 leftTop, rightBottom;
+    };
+
+    using std::vector;
+    vector<TileRect> cut(rect & input)
     {
         const int w = input.get_width(), h = input.get_height();
         rect r(input); // result
 
+        vector<TileRect> tileRects;
         char f = 'A';
         while (1)
         {
@@ -64,12 +80,14 @@ namespace dyb
             f++;
             fill_area(input, p.x, p.y, i - p.x + 1, j - p.y + 1, '.');
 
-            // print rectangle
-            echoivec2(p);
+            tileRects.push_back({ p, ivec2(i, j) });
+            // print rectangle for debugging
+            /*echoivec2(p);
             cout << i << ' ' << j << endl;
-            cout << "-----------------------" << endl;
+            cout << "-----------------------" << endl;*/
         }
-        return r;
+        print(r);  // print map with tiles grouped
+        return tileRects;
     }
 
 }

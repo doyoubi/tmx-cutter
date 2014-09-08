@@ -6,6 +6,7 @@ Since adding every tile to physics world one by one will lead to bad performance
 I want to group some tiles together before send them to physicsl world.
 
 This tool will only support orthogonal viewing map. It will accept a tmx file and produce larger rectangle which can be used as AABB in physics world.
+"Cutter" of tmx-cutter means cut the tile polygon into rectangular pieces.
 
 This tools is based on tmx-parser https://github.com/soryy708/tmx-parser
 

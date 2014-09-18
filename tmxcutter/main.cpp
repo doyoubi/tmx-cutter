@@ -131,6 +131,10 @@ int main(int args, char * argv[])
     doc.LinkEndChild(decl);
     TiXmlElement * root = new TiXmlElement("wall");
     doc.LinkEndChild(root);
+    root->SetAttribute("mapWidth", map->GetWidth());
+    root->SetAttribute("mapHeight", map->GetHeight());
+    root->SetAttribute("tileWidth", map->GetTileWidth());
+    root->SetAttribute("tileHeight", map->GetTileWidth());
     for (auto & pixelRect : pixelrects)
     {
         using std::to_string;

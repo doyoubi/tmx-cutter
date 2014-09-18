@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="40" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="ground" tilewidth="16" tileheight="16">
+  <image source="ground.png" width="512" height="4000"/>
+ </tileset>
+ <tileset firstgid="8001" name="grass" tilewidth="16" tileheight="16">
+  <image source="grass.png" width="80" height="16"/>
+ </tileset>
+ <tileset firstgid="8006" name="meta" tilewidth="16" tileheight="16">
+  <image source="meta.png" width="16" height="416"/>
+  <tile id="1">
+   <properties>
+    <property name="wall" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="ground1" width="32" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMA6Dx/kmXYj2Ogr2kqqqqqurLA/YNnD0=
+  </data>
+ </layer>
+ <layer name="ground2" width="32" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztlzsOACEIBb3JnsX7X2orGoKJm9WHn5nKUDBYgFIKAHylPn2xkT7Lb+coNtvr/bOJ7goAOtS9510Zvd+atao6mHkA95Hd87f7dyZ6N0/2msvvJ0q3r0HtX2Eny/ojwX9e4DsYAQ==
+  </data>
+ </layer>
+ <layer name="building" width="32" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztlt0NwjAMhPtYNoFNYBPYBDYpm8AmsAV+sVSdZN25zY8iYcmyiBrnvpJcukzT9LRcKlcMH79bPixflu+KFcPXdR0fy2/FyvhbB/K3jj9/Wf6r5W1VWZTm935emQ6VX+VBv2F9Vf6IB3+j37C+qk58ztfFeeg3ke8hF9OJPOq8yPc8VH7k8XmMj0V2/6MO5FP3qcfW8x+912yf0uc/26e0/2X3Q2l+tt8xRrv/svubzcvyqz6M41F/ld/7qD6s9s/eU8yH8T0wn1T58fs48mHkiHwS+zJ+1B/5MHKw87j3HsPxrP+UPv9Z/xnl+3e2PFRYX+U/Wp426GDPq/xny8tKhxpMd/b/dx1qMN2t7r9I9yj7v1ZE9wfWORjfW5G/V3UdvarfG73qD0j8SDg=
+  </data>
+ </layer>
+ <layer name="meta" width="32" height="40" opacity="0.4">
+  <data encoding="base64" compression="zlib">
+   eJztlUsKACEMQ73JHMf732j2hdKPabWQQBeK5gW/+1trN5RUB3MSv1vkk4/kR/2q+ZZvdNxtvhyntav5qHWr5ls6Pa/dfDnP24/mR3OR38OPaho/m9O6L6f/VdYf9f69wtfWBcX35tHmofhWLq/4/szgV+XL3r+oP8oXfb669v8238pFPutm/flrt0k=
+  </data>
+ </layer>
+</map>

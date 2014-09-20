@@ -81,6 +81,7 @@
     <ClInclude Include="..\dyb\2d\array2d.h" />
     <ClInclude Include="..\dyb\2d\point2d.h" />
     <ClInclude Include="DijkstraAlgorithm.h" />
+    <ClInclude Include="test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DijkstraAlgorithm.cpp" />

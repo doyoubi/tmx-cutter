@@ -12,6 +12,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tmxcutter", "tmxcutter\tmxc
 		{798FC53D-6DA5-4634-8C4E-1CA2368F27EA} = {798FC53D-6DA5-4634-8C4E-1CA2368F27EA}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TmxPathfinding", "TmxPathfinding\TmxPathfinding.vcxproj", "{2B7F0DE4-5700-4E04-B21D-2522A2055FBA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{798FC53D-6DA5-4634-8C4E-1CA2368F27EA} = {798FC53D-6DA5-4634-8C4E-1CA2368F27EA}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -30,6 +35,10 @@ Global
 		{6643C971-573D-4CEC-982F-EFDF4D34AE31}.Debug|Win32.Build.0 = Debug|Win32
 		{6643C971-573D-4CEC-982F-EFDF4D34AE31}.Release|Win32.ActiveCfg = Release|Win32
 		{6643C971-573D-4CEC-982F-EFDF4D34AE31}.Release|Win32.Build.0 = Release|Win32
+		{2B7F0DE4-5700-4E04-B21D-2522A2055FBA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2B7F0DE4-5700-4E04-B21D-2522A2055FBA}.Debug|Win32.Build.0 = Debug|Win32
+		{2B7F0DE4-5700-4E04-B21D-2522A2055FBA}.Release|Win32.ActiveCfg = Release|Win32
+		{2B7F0DE4-5700-4E04-B21D-2522A2055FBA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

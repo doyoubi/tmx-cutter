@@ -9,11 +9,14 @@
 namespace dyb
 {
     using std::vector;
+    typedef dyb::array2d<float> graph;
+    // graph[i][j] != inf means there is an directed edge from i to j
 
     class DijkstraAlgorithm
     {
     public:
         DijkstraAlgorithm(int nodeNumber);
+        DijkstraAlgorithm(graph && otherGraph);
         int getNodeNumber() const;
 
         // should use DijkstraAlgorithm::inf to represent infinite
@@ -31,8 +34,7 @@ namespace dyb
 
         const int nodeNum;
 
-        typedef dyb::array2d<float> mat;
-        mat adjacency_matrix;
+        graph adjacency_matrix;
 
         int startNode; // ternimal node should not be equal to start node
         // used in getPathResult, getPathLengthResult

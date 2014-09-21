@@ -12,6 +12,7 @@
 #include "DijkstraAlgorithm.h"
 #include "tmxWall.h"
 #include "tmxObjNode.h"
+#include "intersect.h"
 using std::cout;
 using std::endl;
 using std::string;
@@ -53,6 +54,7 @@ int main()
 
     auto nodes = dyb::getTmxObjNode(map, objectGroupName);
     auto walls = dyb::parseWallXml(wallXmlFile);
+    auto graph = dyb::findEdge(nodes, walls);
     const vec3 red(1, 0, 0);
     for (auto & n : nodes)
     {
@@ -61,6 +63,15 @@ int main()
     for (auto & w : walls)
     {
         drawAARect(win, w.leftTop, w.rightBottom, red);
+    }
+    for (int i = 0; i < graph.get_width(); i++)
+    {
+        for (int j = 0; j < graph.get_height(); j++)
+        {
+            if (graph[i][j] == dyb::DijkstraAlgorithm::inf)
+                continue;
+            win.getScreenManager()->drawLine(nodes[i], nodes[j], vec3(0,0,1));
+        }
     }
 
     win.runLoop(loop);

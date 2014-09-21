@@ -15,6 +15,8 @@ namespace dyb
     struct WallRect
     {
         ivec2 leftTop, rightBottom;
+        ivec2 leftBottom() const { return ivec2(leftTop.x, rightBottom.y); }
+        ivec2 rightTop() const { return ivec2(rightBottom.x, leftTop.y); }
     };
 
     vector<WallRect> parseWallXml(const string & wallXmlFile);

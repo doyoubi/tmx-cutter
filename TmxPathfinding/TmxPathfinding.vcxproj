@@ -87,6 +87,7 @@
     <ClInclude Include="..\dyb\window\screen_manager.h" />
     <ClInclude Include="..\dyb\window\Window.h" />
     <ClInclude Include="DijkstraAlgorithm.h" />
+    <ClInclude Include="intersect.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="tmxObjNode.h" />
     <ClInclude Include="tmxWall.h" />
@@ -96,6 +97,7 @@
     <ClCompile Include="..\dyb\window\Window.cpp" />
     <ClCompile Include="DijkstraAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="intersect.cpp" />
     <ClCompile Include="tmxObjNode.cpp" />
     <ClCompile Include="tmxWall.cpp" />
   </ItemGroup>

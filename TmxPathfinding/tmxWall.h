@@ -3,15 +3,13 @@
 
 #include <string>
 #include <vector>
-#include "../dyb/2d/array2d.h"
+#include "glm/vec2.hpp"
 
 namespace dyb
 {
     using std::string;
     using std::vector;
-
-    typedef dyb::point2d<int> ivec2;
-    typedef dyb::array2d<char> rect;
+    using glm::ivec2;
 
     // in pixel
     struct WallRect

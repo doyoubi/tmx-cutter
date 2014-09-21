@@ -46,6 +46,8 @@ namespace dyb
         void set_data(initializer_list<T> list);
         void transpose();
 
+        const T * getRawData() const { return data; }
+
         T * const operator[](int x);
         const T * const operator[](int x)const;
         T & operator[](point2d<int> point);

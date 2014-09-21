@@ -69,27 +69,34 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)dyb;$(SolutionDir)dyb/dependencyHeader;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>TmxParser.lib;tinyxml2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>TmxParser.lib;tinyxml2.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\;$(SolutionDir)dyb\dependencyLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\dyb\2d\array2d.h" />
     <ClInclude Include="..\dyb\2d\point2d.h" />
     <ClInclude Include="..\dyb\debug.h" />
+    <ClInclude Include="..\dyb\window\screen_manager.h" />
+    <ClInclude Include="..\dyb\window\Window.h" />
     <ClInclude Include="DijkstraAlgorithm.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="tmxObjNode.h" />
     <ClInclude Include="tmxWall.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\dyb\window\screen_manager.cpp" />
+    <ClCompile Include="..\dyb\window\Window.cpp" />
     <ClCompile Include="DijkstraAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="tmxObjNode.cpp" />
     <ClCompile Include="tmxWall.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

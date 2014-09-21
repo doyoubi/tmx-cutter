@@ -1,22 +1,38 @@
 #include <iostream>
-#include <algorithm>
 #include <memory>
 #include <string>
-#include <sstream>
-#include <fstream>
 //#include "test.h"
+#include "GLFW/glfw3.h"
+#include "glm/vec2.hpp"
 #include "../TmxParser/Tmx.h"
 #include "../TmxParser/TinyXML/tinyxml.h"
-#include "../dyb/debug.h"
+
+#include "debug.h"
+#include "window/Window.h"
 #include "DijkstraAlgorithm.h"
 #include "tmxWall.h"
+#include "tmxObjNode.h"
 using std::cout;
 using std::endl;
 using std::string;
 using std::shared_ptr;
+using glm::ivec2;
+using glm::vec3;
 
-typedef dyb::point2d<int> ivec2;
-typedef dyb::array2d<char> rect;
+void loop()
+{
+}
+
+void drawAARect(dyb::Window & win, const ivec2 & leftTop, const ivec2 & rightBottom, const vec3 & rgb)
+{
+    auto sm = win.getScreenManager();
+    const ivec2 rightTop(rightBottom.x, leftTop.y);
+    const ivec2 leftBottom(leftTop.x, rightBottom.y);
+    sm->drawLine(leftTop, rightTop, rgb);
+    sm->drawLine(leftTop, leftBottom, rgb);
+    sm->drawLine(rightBottom, leftBottom, rgb);
+    sm->drawLine(rightBottom, rightTop, rgb);
+}
 
 int main()
 {
@@ -31,24 +47,23 @@ int main()
     {
         cout << "error code : " << map->GetErrorCode() << endl;
         cout << "error text: " << map->GetErrorText() << endl;
-        return map->GetErrorCode();
     }
 
-    Tmx::ObjectGroup * pathObjGroup = *std::find_if(
-        begin(map->GetObjectGroups()), end(map->GetObjectGroups()),
-        [&objectGroupName](Tmx::ObjectGroup * objGroup){
-        return objGroup->GetName() == objectGroupName;
-    });
+    dyb::Window win(map->GetWidth() * map->GetTileWidth(), map->GetHeight() * map->GetTileHeight());
 
-    std::vector<ivec2> nodes;
-    for (auto p : pathObjGroup->GetObjects())
+    auto nodes = dyb::getTmxObjNode(map, objectGroupName);
+    auto walls = dyb::parseWallXml(wallXmlFile);
+    const vec3 red(1, 0, 0);
+    for (auto & n : nodes)
     {
-        nodes.push_back(ivec2(p->GetX(), p->GetY()));
-        cout << p->GetX() << ' ' << p->GetY() << endl;
+        win.getScreenManager()->drawPoint(n, vec3(0,0,1));
+    }
+    for (auto & w : walls)
+    {
+        drawAARect(win, w.leftTop, w.rightBottom, red);
     }
 
-    auto walls = dyb::parseWallXml( wallXmlFile);
-    for (auto & w : walls)
-        dyb::echoivec2(w.leftTop);
+    win.runLoop(loop);
+
     return 0;
 }

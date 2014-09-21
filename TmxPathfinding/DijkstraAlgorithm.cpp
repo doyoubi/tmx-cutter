@@ -1,5 +1,5 @@
 #include "DijkstraAlgorithm.h"
-#include "../dyb/debug.h"
+#include "debug.h"
 
 namespace dyb
 {

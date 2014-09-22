@@ -27,6 +27,26 @@ namespace dyb
         doc.SaveFile(outputXMLName);
     }
 
+    void writeEdgeXML(const Graph & graph, const char * outputXMLName, const char * mapName)
+    {
+        XMLDocument doc;
+        XMLDeclaration * declaration = doc.NewDeclaration();
+        doc.LinkEndChild(declaration);
+        XMLElement * root = doc.NewElement("GraphEdge");
+        doc.LinkEndChild(root);
+        root->SetAttribute("mapName", mapName);
+        for (int i = 0; i < graph.get_width(); i++)
+        for (int j = 0; j < graph.get_width(); j++)
+        {
+            XMLElement * node = doc.NewElement("Edge");
+            root->LinkEndChild(node);
+            node->SetAttribute("start", j);
+            node->SetAttribute("terminal", i);
+            node->SetAttribute("distance", graph[j][i]);
+        }
+        doc.SaveFile(outputXMLName);
+    }
+
     void writePathXML(Graph g, const char * outputXMLName, const char * mapName)
     {
         DijkstraAlgorithm dij(std::move(g));

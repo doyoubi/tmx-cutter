@@ -10,7 +10,7 @@ namespace dyb
 {
     using std::vector;
     typedef dyb::array2d<float> Graph;
-    // Graph[i][j] != inf means there is an directed edge from i to j
+    // Graph[i][j] != inf means there is an directed edge from j to i
 
     class DijkstraAlgorithm
     {

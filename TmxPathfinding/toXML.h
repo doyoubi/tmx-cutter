@@ -12,7 +12,7 @@ namespace dyb
     using std::vector;
 
     void writeNodePosiXML(const vector<ivec2> & nodes, const char * outputXMLName, const char * mapName);
-
+    void writeEdgeXML(const Graph & graph, const char * outputXMLName, const char * mapName);
     void writePathXML(Graph g, const char * outputXMLName, const char * mapName);
 
 }

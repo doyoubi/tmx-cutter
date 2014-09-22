@@ -91,7 +91,7 @@ int main()
         win.getScreenManager()->drawLine(preNode, currNode, vec3(0, 1, 0));
     }
 
-    win.runLoop(loop);
+    win.runLoop();
 
     return 0;
 }

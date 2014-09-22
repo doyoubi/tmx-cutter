@@ -34,11 +34,17 @@ namespace dyb
         glfwSetKeyCallback(window, key_callback);
     }
 
-    void Window::runLoop(LoopFunc loopFunc)
+    void Window::setLoopFunc(LoopFunc LoopFunction)
+    {
+        loopFunc = LoopFunction;
+    }
+
+    void Window::runLoop()
     {
         while (!glfwWindowShouldClose(window))
         {
-            loopFunc();
+            if (loopFunc)
+                loopFunc();
             screenManager.drawToGL();
             glfwSwapBuffers(window);
             glfwPollEvents();

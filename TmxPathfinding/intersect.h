@@ -18,7 +18,7 @@ namespace dyb
         ivec2 p1, p2;
     };
 
-    graph findEdge(const vector<ivec2> & nodes, const vector<WallRect> & rects);
+    Graph findEdge(const vector<ivec2> & nodes, const vector<WallRect> & rects);
 
     bool intersect(const WallRect & wallRect, const Line & line);
     bool intersect(const Line & aaLine, const Line & line);

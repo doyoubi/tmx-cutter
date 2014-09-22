@@ -12,10 +12,16 @@ namespace dyb
         DEBUGCHECK(nodeNumber > 1, "nodeNumber should be larger than one");
     }
 
-    DijkstraAlgorithm::DijkstraAlgorithm(graph && otherGraph)
+    DijkstraAlgorithm::DijkstraAlgorithm(Graph && otherGraph)
         : DijkstraAlgorithm(otherGraph.get_width())
     {
         adjacency_matrix = std::move(otherGraph);
+    }
+
+    DijkstraAlgorithm::DijkstraAlgorithm(const Graph & otherGraph)
+        : DijkstraAlgorithm(otherGraph.get_width())
+    {
+        adjacency_matrix = otherGraph;
     }
 
 

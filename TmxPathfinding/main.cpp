@@ -13,6 +13,7 @@
 #include "tmxWall.h"
 #include "tmxObjNode.h"
 #include "intersect.h"
+#include "toXML.h"
 using std::cout;
 using std::endl;
 using std::string;
@@ -35,12 +36,15 @@ void drawAARect(dyb::Window & win, const ivec2 & leftTop, const ivec2 & rightBot
     sm->drawLine(rightBottom, rightTop, rgb);
 }
 
+
 int main()
 {
-    const string wallXmlFile = "road1_wall.xml";
-    const string tmxFile = "road1.tmx";
+    const string wallXmlFile = "resources/road1_wall.xml";
+    const string tmxFile = "resources/road1.tmx";
     const string objectGroupName = "path";
-    const string savedXmlFile = "output.xml";
+    const string nodePostionXML = "resources/nodePosition.xml";
+    const string pathXML = "resources/path.xml";
+    const string mapName = "road1";
 
     shared_ptr<Tmx::Map> map(new Tmx::Map());
     map->ParseFile(tmxFile);
@@ -52,6 +56,7 @@ int main()
 
     dyb::Window win(map->GetWidth() * map->GetTileWidth(), map->GetHeight() * map->GetTileHeight());
 
+    // TODO : check if nodes is inside walls
     auto nodes = dyb::getTmxObjNode(map, objectGroupName);
     auto walls = dyb::parseWallXml(wallXmlFile);
     auto graph = dyb::findEdge(nodes, walls);
@@ -72,6 +77,18 @@ int main()
                 continue;
             win.getScreenManager()->drawLine(nodes[i], nodes[j], vec3(0,0,1));
         }
+    }
+
+    dyb::writeNodePosiXML(nodes, nodePostionXML.c_str(), mapName.c_str());
+    dyb::writePathXML(graph, pathXML.c_str(), mapName.c_str());
+
+    dyb::DijkstraAlgorithm dij(graph);
+    dij.run(0);
+    for (size_t pre = 0, curr = 1; curr < dij.getPathResult(11).size(); ++pre, ++curr)
+    {
+        ivec2 & preNode = nodes[dij.getPathResult(11)[pre]];
+        ivec2 & currNode = nodes[dij.getPathResult(11)[curr]];
+        win.getScreenManager()->drawLine(preNode, currNode, vec3(0, 1, 0));
     }
 
     win.runLoop(loop);

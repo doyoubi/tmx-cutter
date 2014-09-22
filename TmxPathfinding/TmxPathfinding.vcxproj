@@ -69,7 +69,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dyb;$(SolutionDir)dyb/dependencyHeader;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dyb;$(SolutionDir)dyb/dependencyHeader;$(SolutionDir)tinyxml2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,6 +91,7 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="tmxObjNode.h" />
     <ClInclude Include="tmxWall.h" />
+    <ClInclude Include="toXML.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\dyb\window\screen_manager.cpp" />
@@ -100,6 +101,7 @@
     <ClCompile Include="intersect.cpp" />
     <ClCompile Include="tmxObjNode.cpp" />
     <ClCompile Include="tmxWall.cpp" />
+    <ClCompile Include="toXML.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NodePosition mapName="road1">
+    <Node index="0" x="82" y="95"/>
+    <Node index="1" x="114" y="240"/>
+    <Node index="2" x="109" y="340"/>
+    <Node index="3" x="53" y="247"/>
+    <Node index="4" x="228" y="475"/>
+    <Node index="5" x="344" y="461"/>
+    <Node index="6" x="102" y="560"/>
+    <Node index="7" x="236" y="563"/>
+    <Node index="8" x="227" y="560"/>
+    <Node index="9" x="333" y="561"/>
+    <Node index="10" x="450" y="570"/>
+    <Node index="11" x="452" y="447"/>
+    <Node index="12" x="454" y="270"/>
+    <Node index="13" x="342" y="224"/>
+    <Node index="14" x="334" y="318"/>
+    <Node index="15" x="250" y="316"/>
+    <Node index="16" x="271" y="215"/>
+    <Node index="17" x="266" y="82"/>
+    <Node index="18" x="418" y="89"/>
+    <Node index="19" x="415" y="213"/>
+    <Node index="20" x="159" y="289"/>
+    <Node index="21" x="262" y="156"/>
+    <Node index="22" x="115" y="139"/>
+    <Node index="23" x="107" y="450"/>
+    <Node index="24" x="7" y="5"/>
+</NodePosition>

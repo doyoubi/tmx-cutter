@@ -6,13 +6,13 @@
 
 namespace dyb
 {
-    graph findEdge(const vector<ivec2> & nodes, const vector<WallRect> & rects)
+    Graph findEdge(const vector<ivec2> & nodes, const vector<WallRect> & rects)
     {
-        graph g(nodes.size(), nodes.size());
+        Graph g(nodes.size(), nodes.size());
         std::fill(std::begin(g), std::end(g), DijkstraAlgorithm::inf);
-        for (int i = 0; i < nodes.size(); i++)
+        for (int i = 0; i < int(nodes.size()); i++)
         {
-            for (int j = i+1; j < nodes.size(); j++)
+            for (int j = i+1; j < int(nodes.size()); j++)
             {
                 if (std::any_of(begin(rects), end(rects), [&nodes, i, j](const WallRect & r){
                     return intersect( r, Line{nodes[i], nodes[j]} );
@@ -68,7 +68,7 @@ namespace dyb
         }
         if ((a.x - m)*(b.x - m) > 0) return false;
         float t = float(m - b.x) / float(a.x - b.x);
-        return between(c, d, t*(a.y - b.y) + b.y);
+        return between(c, d, int(t*(a.y - b.y) + b.y));
     }
 
     bool insideRect(const WallRect & rect, ivec2 p)

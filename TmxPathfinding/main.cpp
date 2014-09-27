@@ -14,10 +14,12 @@
 #include "tmxObjNode.h"
 #include "intersect.h"
 #include "toXML.h"
+#include "voronoi.h"
 using std::cout;
 using std::endl;
 using std::string;
 using std::shared_ptr;
+using glm::vec2;
 using glm::ivec2;
 using glm::vec3;
 
@@ -53,7 +55,26 @@ int main()
     dyb::writeEdgeXML(graph, edgeXML.c_str(), mapName.c_str());
     dyb::writePathXML(graph, pathXML.c_str(), mapName.c_str());
 
-    debugDisplay(nodes, walls, graph, win);
+    //findPathDebugDisplay(nodes, walls, graph, win);
+    dyb::VoronoiDiagram vd(nodes, ivec2(win.getScreenManager()->getWidth(), win.getScreenManager()->getHeight()));
+    for (int i = 0; i < nodes.size(); i++)
+    {
+        vd.constructConvexForSingleNode(i);
+        auto & convex = vd.convexArray[i];
+        cout << "--------------------------------------------" << endl;
+        auto sm = win.getScreenManager();
+        auto firstIt = convex.loop_begin();
+        auto next = firstIt; ++next;
+        do
+        {
+            sm->drawLine(*firstIt, *next, vec3(1, 0, 0));
+            sm->drawPoint(nodes[i], vec3(0, 0, 1));
+            cout << (*firstIt).x << ' ' << (*firstIt).y << endl;
+            ++firstIt;
+            ++next;
+        } while (firstIt != convex.loop_end());
+    }
+    win.runLoop();
 
     return 0;
 }
@@ -70,7 +91,7 @@ void drawAARect(dyb::Window & win, const ivec2 & leftTop, const ivec2 & rightBot
     sm->drawLine(rightBottom, rightTop, rgb);
 }
 
-void debugDisplay(const dyb::vector<ivec2> nodes, const std::vector<dyb::WallRect> walls, 
+void findPathDebugDisplay(const dyb::vector<ivec2> & nodes, const std::vector<dyb::WallRect> walls, 
     const dyb::Graph & graph, dyb::Window & win)
 {
     const vec3 red(1, 0, 0);

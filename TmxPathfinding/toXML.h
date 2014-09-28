@@ -17,7 +17,7 @@ namespace dyb
 
     void writeNodePosiXML(const vector<ivec2> & nodes, const string & outputXMLName, const string & mapName);
     void writeEdgeXML(const Graph & graph, const string & outputXMLName, const string & mapName);
-    void writePathXML(Graph g, const string & outputXMLName, const string & mapName);
+    void writePathXML(dyb::DijkstraAlgorithm & dij, const string & outputXMLName, const string & mapName);
     void writeVoronoiXML(const dyb::VoronoiDiagram & vd, const ivec2 & mapSize,
         const string & outputXMLName, const string & mapName);
 

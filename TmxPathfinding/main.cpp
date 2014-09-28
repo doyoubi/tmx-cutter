@@ -56,7 +56,8 @@ int main()
 
     dyb::writeNodePosiXML(nodes, nodePostionXML, mapName);
     dyb::writeEdgeXML(graph, edgeXML, mapName);
-    dyb::writePathXML(graph, pathXML, mapName);
+    dyb::DijkstraAlgorithm dij(graph);
+    dyb::writePathXML(dij, pathXML, mapName);
     dyb::VoronoiDiagram vd(nodes,
         ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()));
     dyb::writeVoronoiXML(vd,

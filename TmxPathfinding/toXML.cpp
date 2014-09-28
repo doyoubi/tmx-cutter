@@ -50,10 +50,8 @@ namespace dyb
         doc.SaveFile(outputXMLName.c_str());
     }
 
-    void writePathXML(Graph g, const string & outputXMLName, const string & mapName)
+    void writePathXML(dyb::DijkstraAlgorithm & dij, const string & outputXMLName, const string & mapName)
     {
-        DijkstraAlgorithm dij(std::move(g));
-
         XMLDocument doc;
         XMLDeclaration * declaration = doc.NewDeclaration();
         doc.LinkEndChild(declaration);

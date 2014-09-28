@@ -51,6 +51,9 @@
     <ClInclude Include="voronoi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\dyb\circular_list\circle_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

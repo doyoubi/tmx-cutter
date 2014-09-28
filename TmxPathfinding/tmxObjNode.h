@@ -8,7 +8,7 @@
 
 namespace dyb
 {
-    std::vector<glm::ivec2> getTmxObjNode(std::shared_ptr<Tmx::Map> map, const std::string & objectGroupName);
+    std::vector<glm::ivec2> getTmxObjNode(const Tmx::Map & map, const std::string & objectGroupName);
 }
 
 #endif

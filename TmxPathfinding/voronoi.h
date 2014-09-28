@@ -18,15 +18,24 @@ http://blog.ivank.net/fortunes-algorithm-and-implementation.html
 namespace dyb
 {
 
-    struct VoronoiDiagram
+    class VoronoiDiagram
     {
-        VoronoiDiagram(const std::vector<glm::ivec2> & _nodes, const glm::ivec2 & _winSize);
-        void contruct();
+    public:
+        VoronoiDiagram(const std::vector<glm::ivec2> & _nodes, const glm::ivec2 & _mapSize);
+        const circular_list<glm::vec2> & getConvex(int node) const;
+        int getConvexNum() const { return convexArray.size(); }
+
+        std::vector<circular_list<int>> convexPointIndexArray;
+        std::vector<glm::ivec2> convexPoints;
+
+    private:
+        void construct();
         void constructConvexForSingleNode(int node);
+        void combineConvexPoint();
 
         std::vector<circular_list<glm::vec2>> convexArray;
         std::vector<glm::ivec2> nodes;
-        glm::ivec2 winSize;
+        glm::ivec2 mapSize;
     };
 
 }

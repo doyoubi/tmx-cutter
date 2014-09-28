@@ -16,10 +16,10 @@ namespace dyb
     using std::shared_ptr;
     using glm::ivec2;
 
-    std::vector<ivec2> getTmxObjNode(shared_ptr<Tmx::Map> map, const string & objectGroupName)
+    std::vector<ivec2> getTmxObjNode(const Tmx::Map & map, const string & objectGroupName)
     {
         Tmx::ObjectGroup * pathObjGroup = *std::find_if(
-            begin(map->GetObjectGroups()), end(map->GetObjectGroups()),
+            begin(map.GetObjectGroups()), end(map.GetObjectGroups()),
             [&objectGroupName](Tmx::ObjectGroup * objGroup){
             return objGroup->GetName() == objectGroupName;
         });

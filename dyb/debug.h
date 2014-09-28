@@ -11,7 +11,8 @@ namespace dyb
     using std::cerr;
 
     
-    inline void echoivec2(const point2d<int> & p)
+    template<class vec2>
+    inline void echoivec2(const vec2 & p)
     {
         cout << p.x << ' ' << p.y << endl;
     }

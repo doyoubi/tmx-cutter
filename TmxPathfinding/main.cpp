@@ -34,46 +34,50 @@ int main()
     const string nodePostionXML = "resources/nodePosition.xml";
     const string edgeXML = "resources/edge.xml";
     const string pathXML = "resources/path.xml";
+    const string voronoiXML = "resources/voronoi.xml";
     const string mapName = "road1";
 
-    shared_ptr<Tmx::Map> map(new Tmx::Map());
-    map->ParseFile(tmxFile);
-    if (map->HasError())
+    Tmx::Map map;
+    //shared_ptr<Tmx::Map> map(new Tmx::Map());
+    map.ParseFile(tmxFile);
+    if (map.HasError())
     {
-        cout << "error code : " << map->GetErrorCode() << endl;
-        cout << "error text: " << map->GetErrorText() << endl;
+        cout << "error code : " << map.GetErrorCode() << endl;
+        cout << "error text: " << map.GetErrorText() << endl;
     }
 
-    dyb::Window win(map->GetWidth() * map->GetTileWidth(), map->GetHeight() * map->GetTileHeight());
+    dyb::Window win(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight());
 
     // TODO : check if nodes is inside walls
     auto nodes = dyb::getTmxObjNode(map, objectGroupName);
     auto walls = dyb::parseWallXml(wallXmlFile);
     auto graph = dyb::findEdge(nodes, walls);
 
-    dyb::writeNodePosiXML(nodes, nodePostionXML.c_str(), mapName.c_str());
-    dyb::writeEdgeXML(graph, edgeXML.c_str(), mapName.c_str());
-    dyb::writePathXML(graph, pathXML.c_str(), mapName.c_str());
+    dyb::writeNodePosiXML(nodes, nodePostionXML, mapName);
+    dyb::writeEdgeXML(graph, edgeXML, mapName);
+    dyb::writePathXML(graph, pathXML, mapName);
+    /*dyb::writeVoronoiXML(walls, nodes,
+        ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()),
+        voronoiXML, mapName);*/
 
     //findPathDebugDisplay(nodes, walls, graph, win);
-    dyb::VoronoiDiagram vd(nodes, ivec2(win.getScreenManager()->getWidth(), win.getScreenManager()->getHeight()));
-    for (int i = 0; i < nodes.size(); i++)
+    dyb::VoronoiDiagram vd(nodes, 
+        ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()));
+    auto & points = vd.convexPoints;
+    for (int i = 0; i < vd.getConvexNum(); ++i)
     {
-        vd.constructConvexForSingleNode(i);
-        auto & convex = vd.convexArray[i];
-        cout << "--------------------------------------------" << endl;
-        auto sm = win.getScreenManager();
-        auto firstIt = convex.loop_begin();
-        auto next = firstIt; ++next;
+        //auto & convex = vd.getConvex(i);
+        auto & convex = vd.convexPointIndexArray[i];
+        auto it = convex.loop_begin();
+        auto next = it; ++next;
         do
         {
-            sm->drawLine(*firstIt, *next, vec3(1, 0, 0));
-            sm->drawPoint(nodes[i], vec3(0, 0, 1));
-            cout << (*firstIt).x << ' ' << (*firstIt).y << endl;
-            ++firstIt;
-            ++next;
-        } while (firstIt != convex.loop_end());
+            win.getScreenManager()->drawLine(points[*it], points[*next], vec3(1, 0, 0));
+            ++it; ++next;
+        } while (it != convex.loop_end());
+        win.getScreenManager()->drawPoint(nodes[i], vec3(0, 0, 1));
     }
+    cout << vd.convexPoints.size() << endl;
     win.runLoop();
 
     return 0;

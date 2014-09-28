@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClInclude Include="..\dyb\2d\array2d.h" />
     <ClInclude Include="..\dyb\2d\point2d.h" />
+    <ClInclude Include="..\dyb\circular_list\circle_list.h" />
     <ClInclude Include="..\dyb\debug.h" />
     <ClInclude Include="..\dyb\window\screen_manager.h" />
     <ClInclude Include="..\dyb\window\Window.h" />

@@ -24,6 +24,9 @@ namespace dyb
     bool intersect(const Line & aaLine, const Line & line);
     bool insideRect(const WallRect & wallRect, ivec2 p);
     bool between(int left, int right, int num);
+
+    // if there is a node inside wall, it will print the location and stop the program
+    void checkNodeInsideWall(const vector<WallRect> & walls, const vector<ivec2> & nodes);
 }
 
 #endif

@@ -6,6 +6,7 @@
 
 namespace dyb
 {
+
     Graph findEdge(const vector<ivec2> & nodes, const vector<WallRect> & rects)
     {
         Graph g(nodes.size(), nodes.size());
@@ -85,4 +86,23 @@ namespace dyb
         return left <= num && num <= right;
     }
 
+    void checkNodeInsideWall(const vector<WallRect> & walls, const vector<ivec2> & nodes)
+    {
+        for (auto & wall : walls)
+        {
+            for (auto & n : nodes)
+            {
+                if (insideRect(wall, n))
+                {
+                    cout << "There is a point inside wall." << endl;
+                    cout << "wall:" << endl
+                        << "leftTop: " << wall.leftTop.x << ' ' << wall.leftTop.y << endl
+                        << "rightBottom: " << wall.rightBottom.x << ' ' << wall.rightBottom.y << endl;
+                    cout << "node: " << n.x << ',' << n.y << endl;
+                    exit(1);
+                }
+            }
+        }
+    }
+    
 }

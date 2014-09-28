@@ -117,7 +117,6 @@
             <PathNode index="0"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="1">
         <TerminalNode index="0" distanceSum="148.48906">
@@ -235,7 +234,6 @@
             <PathNode index="1"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="2">
         <TerminalNode index="0" distanceSum="246.48326">
@@ -349,7 +347,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="3">
         <TerminalNode index="0" distanceSum="154.74171">
@@ -462,7 +459,6 @@
             <PathNode index="3"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="4">
         <TerminalNode index="0" distanceSum="479.43484">
@@ -585,7 +581,6 @@
             <PathNode index="4"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="5">
         <TerminalNode index="0" distanceSum="531.65686">
@@ -703,7 +698,6 @@
             <PathNode index="5"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="6">
         <TerminalNode index="0" distanceSum="465.4299">
@@ -820,7 +814,6 @@
             <PathNode index="6"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="7">
         <TerminalNode index="0" distanceSum="567.79773">
@@ -949,7 +942,6 @@
             <PathNode index="4"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="8">
         <TerminalNode index="0" distanceSum="564.44073">
@@ -1078,7 +1070,6 @@
             <PathNode index="4"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="9">
         <TerminalNode index="0" distanceSum="607.66681">
@@ -1190,7 +1181,6 @@
             <PathNode index="9"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="10">
         <TerminalNode index="0" distanceSum="719.26465">
@@ -1303,7 +1293,6 @@
             <PathNode index="10"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="11">
         <TerminalNode index="0" distanceSum="617.83539">
@@ -1424,7 +1413,6 @@
             <PathNode index="11"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="12">
         <TerminalNode index="0" distanceSum="440.8241">
@@ -1542,7 +1530,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="13">
         <TerminalNode index="0" distanceSum="321.30591">
@@ -1663,7 +1650,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="14">
         <TerminalNode index="0" distanceSum="388.30762">
@@ -1777,7 +1763,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="15">
         <TerminalNode index="0" distanceSum="304.28381">
@@ -1895,7 +1880,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="16">
         <TerminalNode index="0" distanceSum="249.73775">
@@ -2012,7 +1996,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="17">
         <TerminalNode index="0" distanceSum="184.45866">
@@ -2137,7 +2120,6 @@
             <PathNode index="22"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="18">
         <TerminalNode index="0" distanceSum="336.05356">
@@ -2264,7 +2246,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="19">
         <TerminalNode index="0" distanceSum="393.75165">
@@ -2384,7 +2365,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="20">
         <TerminalNode index="0" distanceSum="215.01724">
@@ -2508,7 +2488,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="21">
         <TerminalNode index="0" distanceSum="190.05525">
@@ -2639,7 +2618,6 @@
             <PathNode index="2"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="22">
         <TerminalNode index="0" distanceSum="55">
@@ -2758,7 +2736,6 @@
             <PathNode index="22"/>
             <PathNode index="23"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
     </StartingNode>
     <StartingNode index="23">
         <TerminalNode index="0" distanceSum="355.87918">
@@ -2874,32 +2851,5 @@
             <PathNode index="23"/>
             <PathNode index="22"/>
         </TerminalNode>
-        <TerminalNode index="24" distanceSum="1.#INF"/>
-    </StartingNode>
-    <StartingNode index="24">
-        <TerminalNode index="0" distanceSum="1.#INF"/>
-        <TerminalNode index="1" distanceSum="1.#INF"/>
-        <TerminalNode index="2" distanceSum="1.#INF"/>
-        <TerminalNode index="3" distanceSum="1.#INF"/>
-        <TerminalNode index="4" distanceSum="1.#INF"/>
-        <TerminalNode index="5" distanceSum="1.#INF"/>
-        <TerminalNode index="6" distanceSum="1.#INF"/>
-        <TerminalNode index="7" distanceSum="1.#INF"/>
-        <TerminalNode index="8" distanceSum="1.#INF"/>
-        <TerminalNode index="9" distanceSum="1.#INF"/>
-        <TerminalNode index="10" distanceSum="1.#INF"/>
-        <TerminalNode index="11" distanceSum="1.#INF"/>
-        <TerminalNode index="12" distanceSum="1.#INF"/>
-        <TerminalNode index="13" distanceSum="1.#INF"/>
-        <TerminalNode index="14" distanceSum="1.#INF"/>
-        <TerminalNode index="15" distanceSum="1.#INF"/>
-        <TerminalNode index="16" distanceSum="1.#INF"/>
-        <TerminalNode index="17" distanceSum="1.#INF"/>
-        <TerminalNode index="18" distanceSum="1.#INF"/>
-        <TerminalNode index="19" distanceSum="1.#INF"/>
-        <TerminalNode index="20" distanceSum="1.#INF"/>
-        <TerminalNode index="21" distanceSum="1.#INF"/>
-        <TerminalNode index="22" distanceSum="1.#INF"/>
-        <TerminalNode index="23" distanceSum="1.#INF"/>
     </StartingNode>
 </Path>

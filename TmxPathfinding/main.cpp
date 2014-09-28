@@ -1,3 +1,4 @@
+#include <tuple>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -10,11 +11,11 @@
 #include "debug.h"
 #include "window/Window.h"
 #include "DijkstraAlgorithm.h"
+#include "VoronoiDiagram.h"
 #include "tmxWall.h"
 #include "tmxObjNode.h"
 #include "intersect.h"
 #include "toXML.h"
-#include "VoronoiDiagram.h"
 using std::cout;
 using std::endl;
 using std::string;
@@ -22,6 +23,7 @@ using std::shared_ptr;
 using glm::vec2;
 using glm::ivec2;
 using glm::vec3;
+using dyb::debugCheck;
 
 void findPathDebugDisplay(const std::vector<ivec2> & nodes, const std::vector<dyb::WallRect> & walls,
     const dyb::Graph & graph, dyb::Window & win);
@@ -39,7 +41,6 @@ int main()
     const string mapName = "road1";
 
     Tmx::Map map;
-    //shared_ptr<Tmx::Map> map(new Tmx::Map());
     map.ParseFile(tmxFile);
     if (map.HasError())
     {
@@ -47,22 +48,24 @@ int main()
         cout << "error text: " << map.GetErrorText() << endl;
     }
 
-    dyb::Window win(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight());
-
-    // TODO : check if nodes is inside walls
     auto nodes = dyb::getTmxObjNode(map, objectGroupName);
-    auto walls = dyb::parseWallXml(wallXmlFile);
+    auto t = dyb::parseWallXml(wallXmlFile);
+    auto walls = std::get<0>(t);
+    const ivec2 mapSize = std::get<1>(t);
+    DEBUGCHECK(mapSize.x == map.GetWidth() * map.GetTileWidth()
+        && mapSize.y == map.GetHeight() * map.GetTileHeight(),
+        "size in wall xml file is not the same as the size in map tmx file.");
+    dyb::checkNodeInsideWall(walls, nodes);
     auto graph = dyb::findEdge(nodes, walls);
+
+    dyb::Window win(mapSize.x, mapSize.y);
 
     dyb::writeNodePosiXML(nodes, nodePostionXML, mapName);
     dyb::writeEdgeXML(graph, edgeXML, mapName);
     dyb::DijkstraAlgorithm dij(graph);
     dyb::writePathXML(dij, pathXML, mapName);
-    dyb::VoronoiDiagram vd(nodes,
-        ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()));
-    dyb::writeVoronoiXML(vd,
-        ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()),
-        voronoiXML, mapName);
+    dyb::VoronoiDiagram vd(nodes, mapSize);
+    dyb::writeVoronoiXML(vd, mapSize, voronoiXML, mapName);
 
     findPathDebugDisplay(nodes, walls, graph, win);
     voronoiDebugDisplay(vd, nodes, win);
@@ -106,7 +109,7 @@ void findPathDebugDisplay(const std::vector<ivec2> & nodes, const std::vector<dy
     }
     dyb::DijkstraAlgorithm dij(graph);
     dij.run(0);
-    for (size_t pre = 0, curr = 1; curr < dij.getPathResult(11).size(); ++pre, ++curr)
+    for (size_t pre = 0, curr = 1; curr < dij.getPathResult(nodes.size()-1).size(); ++pre, ++curr)
     {
         const ivec2 & preNode = nodes[dij.getPathResult(11)[pre]];
         const ivec2 & currNode = nodes[dij.getPathResult(11)[curr]];

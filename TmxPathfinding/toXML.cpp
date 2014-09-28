@@ -1,8 +1,11 @@
+#include <numeric>
+
+#include "glm/glm.hpp"
 #include "tinyxml2.h"
 
 #include "toXML.h"
 #include "debug.h"
-#include "voronoi.h"
+#include "VoronoiDiagram.h"
 
 namespace dyb
 {
@@ -81,22 +84,48 @@ namespace dyb
         doc.SaveFile(outputXMLName.c_str());
     }
 
-    void writeVoronoiXML(const vector<WallRect> & walls, const vector<ivec2> & nodes, const ivec2 & mapSize,
+    void writeVoronoiXML(const dyb::VoronoiDiagram & vd, const ivec2 & mapSize,
         const string & outputXMLName, const string & mapName)
     {
-        VoronoiDiagram vd(nodes, ivec2(0,0));
-        for (int i = 0; i < nodes.size(); i++)
+        using namespace glm;
+        XMLDocument doc;
+        XMLDeclaration * declaration = doc.NewDeclaration();
+        doc.LinkEndChild(declaration);
+        XMLElement * root = doc.NewElement("VoronoiDiagram");
+        doc.LinkEndChild(root);
+        root->SetAttribute("mapName", mapName.c_str());
+        
+        // write convex points
+        const auto & points = vd.getConvexPoints();
+        XMLElement * convexPoints = doc.NewElement("ConvexPoints");
+        root->LinkEndChild(convexPoints);
+        convexPoints->SetAttribute("pointNumber", points.size());
+        for (int i = 0; i < points.size(); i++)
+        {
+            const vec2 & p = points[i];
+            XMLElement * point = doc.NewElement("Point");
+            convexPoints->LinkEndChild(point);
+            point->SetAttribute("index", i);
+            point->SetAttribute("x", p.x);
+            point->SetAttribute("y", p.y);
+        }
+        // write point index
+        XMLElement * pointIndex = doc.NewElement("PointIndex");
+        root->LinkEndChild(pointIndex);
+        int indexNumber = 0;
+        for (int i = 0; i < vd.getConvexNum(); i++)
         {
             auto & convex = vd.getConvex(i);
-            cout << "--------------------------------------------" << endl;
-            auto firstIt = convex.loop_begin();
-            auto next = firstIt; ++next;
-            do
+            indexNumber += convex.size();
+            for (int i : convex)
             {
-                ++firstIt;
-                ++next;
-            } while (firstIt != convex.loop_end());
+                XMLElement * index = doc.NewElement("Index");
+                pointIndex->LinkEndChild(index);
+                index->SetAttribute("pointIndex", i);
+            }
         }
+        pointIndex->SetAttribute("indexNumber", indexNumber);
+        doc.SaveFile(outputXMLName.c_str());
     }
 
 }

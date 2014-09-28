@@ -88,7 +88,7 @@
     <ClInclude Include="..\dyb\window\screen_manager.h" />
     <ClInclude Include="..\dyb\window\Window.h" />
     <ClInclude Include="DijkstraAlgorithm.h" />
-    <ClInclude Include="voronoi.h" />
+    <ClInclude Include="VoronoiDiagram.h" />
     <ClInclude Include="intersect.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="tmxObjNode.h" />
@@ -99,7 +99,7 @@
     <ClCompile Include="..\dyb\window\screen_manager.cpp" />
     <ClCompile Include="..\dyb\window\Window.cpp" />
     <ClCompile Include="DijkstraAlgorithm.cpp" />
-    <ClCompile Include="voronoi.cpp" />
+    <ClCompile Include="VoronoiDiagram.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="intersect.cpp" />
     <ClCompile Include="tmxObjNode.cpp" />

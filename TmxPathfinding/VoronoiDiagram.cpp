@@ -1,7 +1,7 @@
 #include <vector>
 #include "glm/glm.hpp"
 #include "debug.h"
-#include "voronoi.h"
+#include "VoronoiDiagram.h"
 
 namespace dyb
 {

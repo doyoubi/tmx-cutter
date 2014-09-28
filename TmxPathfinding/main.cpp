@@ -14,7 +14,7 @@
 #include "tmxObjNode.h"
 #include "intersect.h"
 #include "toXML.h"
-#include "voronoi.h"
+#include "VoronoiDiagram.h"
 using std::cout;
 using std::endl;
 using std::string;
@@ -57,13 +57,13 @@ int main()
     dyb::writeNodePosiXML(nodes, nodePostionXML, mapName);
     dyb::writeEdgeXML(graph, edgeXML, mapName);
     dyb::writePathXML(graph, pathXML, mapName);
-    /*dyb::writeVoronoiXML(walls, nodes,
+    dyb::VoronoiDiagram vd(nodes,
+        ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()));
+    dyb::writeVoronoiXML(vd,
         ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()),
-        voronoiXML, mapName);*/
+        voronoiXML, mapName);
 
     findPathDebugDisplay(nodes, walls, graph, win);
-    dyb::VoronoiDiagram vd(nodes, 
-        ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()));
     voronoiDebugDisplay(vd, nodes, win);
     win.runLoop();
 

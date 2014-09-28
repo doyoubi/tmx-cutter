@@ -48,10 +48,10 @@
     <ClInclude Include="toXML.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="voronoi.h">
+    <ClInclude Include="..\dyb\circular_list\circle_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\dyb\circular_list\circle_list.h">
+    <ClInclude Include="VoronoiDiagram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,7 +80,7 @@
     <ClCompile Include="toXML.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="voronoi.cpp">
+    <ClCompile Include="VoronoiDiagram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

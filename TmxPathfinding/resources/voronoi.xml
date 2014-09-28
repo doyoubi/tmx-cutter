@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VoronoiDiagram mapName="road1">
+    <ConvexPoints pointNumber="51">
+        <Point index="0" x="172" y="61"/>
+        <Point index="1" x="34" y="164"/>
+        <Point index="2" x="0" y="158"/>
+        <Point index="3" x="0" y="87"/>
+        <Point index="4" x="104" y="0"/>
+        <Point index="5" x="167" y="0"/>
+        <Point index="6" x="183" y="190"/>
+        <Point index="7" x="187" y="197"/>
+        <Point index="8" x="190" y="214"/>
+        <Point index="9" x="108" y="289"/>
+        <Point index="10" x="88" y="288"/>
+        <Point index="11" x="77" y="189"/>
+        <Point index="12" x="185" y="365"/>
+        <Point index="13" x="189" y="388"/>
+        <Point index="14" x="181" y="396"/>
+        <Point index="15" x="0" y="393"/>
+        <Point index="16" x="0" y="342"/>
+        <Point index="17" x="283" y="514"/>
+        <Point index="18" x="246" y="517"/>
+        <Point index="19" x="164" y="516"/>
+        <Point index="20" x="158" y="507"/>
+        <Point index="21" x="277" y="400"/>
+        <Point index="22" x="290" y="505"/>
+        <Point index="23" x="290" y="392"/>
+        <Point index="24" x="389" y="385"/>
+        <Point index="25" x="404" y="507"/>
+        <Point index="26" x="395" y="517"/>
+        <Point index="27" x="0" y="500"/>
+        <Point index="28" x="164" y="639"/>
+        <Point index="29" x="0" y="639"/>
+        <Point index="30" x="286" y="639"/>
+        <Point index="31" x="205" y="639"/>
+        <Point index="32" x="385" y="639"/>
+        <Point index="33" x="511" y="509"/>
+        <Point index="34" x="511" y="639"/>
+        <Point index="35" x="419" y="358"/>
+        <Point index="36" x="511" y="359"/>
+        <Point index="37" x="386" y="274"/>
+        <Point index="38" x="511" y="189"/>
+        <Point index="39" x="346" y="137"/>
+        <Point index="40" x="368" y="149"/>
+        <Point index="41" x="300" y="267"/>
+        <Point index="42" x="311" y="178"/>
+        <Point index="43" x="293" y="272"/>
+        <Point index="44" x="218" y="256"/>
+        <Point index="45" x="340" y="123"/>
+        <Point index="46" x="192" y="115"/>
+        <Point index="47" x="345" y="0"/>
+        <Point index="48" x="511" y="0"/>
+        <Point index="49" x="511" y="153"/>
+        <Point index="50" x="0" y="0"/>
+    </ConvexPoints>
+    <PointIndex indexNumber="132">
+        <Index pointIndex="0"/>
+        <Index pointIndex="1"/>
+        <Index pointIndex="2"/>
+        <Index pointIndex="3"/>
+        <Index pointIndex="4"/>
+        <Index pointIndex="5"/>
+        <Index pointIndex="6"/>
+        <Index pointIndex="7"/>
+        <Index pointIndex="8"/>
+        <Index pointIndex="9"/>
+        <Index pointIndex="10"/>
+        <Index pointIndex="11"/>
+        <Index pointIndex="12"/>
+        <Index pointIndex="13"/>
+        <Index pointIndex="14"/>
+        <Index pointIndex="15"/>
+        <Index pointIndex="16"/>
+        <Index pointIndex="10"/>
+        <Index pointIndex="9"/>
+        <Index pointIndex="16"/>
+        <Index pointIndex="2"/>
+        <Index pointIndex="1"/>
+        <Index pointIndex="11"/>
+        <Index pointIndex="10"/>
+        <Index pointIndex="17"/>
+        <Index pointIndex="18"/>
+        <Index pointIndex="19"/>
+        <Index pointIndex="20"/>
+        <Index pointIndex="14"/>
+        <Index pointIndex="13"/>
+        <Index pointIndex="21"/>
+        <Index pointIndex="22"/>
+        <Index pointIndex="23"/>
+        <Index pointIndex="24"/>
+        <Index pointIndex="25"/>
+        <Index pointIndex="26"/>
+        <Index pointIndex="22"/>
+        <Index pointIndex="21"/>
+        <Index pointIndex="27"/>
+        <Index pointIndex="20"/>
+        <Index pointIndex="19"/>
+        <Index pointIndex="28"/>
+        <Index pointIndex="29"/>
+        <Index pointIndex="18"/>
+        <Index pointIndex="17"/>
+        <Index pointIndex="30"/>
+        <Index pointIndex="31"/>
+        <Index pointIndex="19"/>
+        <Index pointIndex="18"/>
+        <Index pointIndex="31"/>
+        <Index pointIndex="28"/>
+        <Index pointIndex="17"/>
+        <Index pointIndex="22"/>
+        <Index pointIndex="26"/>
+        <Index pointIndex="32"/>
+        <Index pointIndex="30"/>
+        <Index pointIndex="26"/>
+        <Index pointIndex="25"/>
+        <Index pointIndex="33"/>
+        <Index pointIndex="34"/>
+        <Index pointIndex="32"/>
+        <Index pointIndex="25"/>
+        <Index pointIndex="24"/>
+        <Index pointIndex="35"/>
+        <Index pointIndex="36"/>
+        <Index pointIndex="33"/>
+        <Index pointIndex="35"/>
+        <Index pointIndex="37"/>
+        <Index pointIndex="37"/>
+        <Index pointIndex="38"/>
+        <Index pointIndex="36"/>
+        <Index pointIndex="39"/>
+        <Index pointIndex="40"/>
+        <Index pointIndex="37"/>
+        <Index pointIndex="37"/>
+        <Index pointIndex="41"/>
+        <Index pointIndex="42"/>
+        <Index pointIndex="43"/>
+        <Index pointIndex="41"/>
+        <Index pointIndex="37"/>
+        <Index pointIndex="35"/>
+        <Index pointIndex="24"/>
+        <Index pointIndex="23"/>
+        <Index pointIndex="44"/>
+        <Index pointIndex="43"/>
+        <Index pointIndex="23"/>
+        <Index pointIndex="21"/>
+        <Index pointIndex="13"/>
+        <Index pointIndex="12"/>
+        <Index pointIndex="42"/>
+        <Index pointIndex="41"/>
+        <Index pointIndex="43"/>
+        <Index pointIndex="44"/>
+        <Index pointIndex="8"/>
+        <Index pointIndex="7"/>
+        <Index pointIndex="45"/>
+        <Index pointIndex="46"/>
+        <Index pointIndex="0"/>
+        <Index pointIndex="5"/>
+        <Index pointIndex="47"/>
+        <Index pointIndex="40"/>
+        <Index pointIndex="39"/>
+        <Index pointIndex="45"/>
+        <Index pointIndex="47"/>
+        <Index pointIndex="48"/>
+        <Index pointIndex="49"/>
+        <Index pointIndex="37"/>
+        <Index pointIndex="40"/>
+        <Index pointIndex="49"/>
+        <Index pointIndex="38"/>
+        <Index pointIndex="44"/>
+        <Index pointIndex="12"/>
+        <Index pointIndex="9"/>
+        <Index pointIndex="8"/>
+        <Index pointIndex="46"/>
+        <Index pointIndex="45"/>
+        <Index pointIndex="39"/>
+        <Index pointIndex="42"/>
+        <Index pointIndex="7"/>
+        <Index pointIndex="6"/>
+        <Index pointIndex="46"/>
+        <Index pointIndex="6"/>
+        <Index pointIndex="11"/>
+        <Index pointIndex="1"/>
+        <Index pointIndex="0"/>
+        <Index pointIndex="27"/>
+        <Index pointIndex="15"/>
+        <Index pointIndex="14"/>
+        <Index pointIndex="20"/>
+        <Index pointIndex="3"/>
+        <Index pointIndex="50"/>
+        <Index pointIndex="4"/>
+    </PointIndex>
+</VoronoiDiagram>

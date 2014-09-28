@@ -44,10 +44,10 @@ namespace dyb
         construct();
     }
 
-    const circular_list<vec2> & VoronoiDiagram::getConvex(int node) const
+    const circular_list<int> & VoronoiDiagram::getConvex(int node) const
     {
         DEBUGCHECK(0 <= node && node < convexArray.size(), "invalid node index");
-        return convexArray[node];
+        return convexPointIndexArray[node];
     }
 
     void VoronoiDiagram::construct()

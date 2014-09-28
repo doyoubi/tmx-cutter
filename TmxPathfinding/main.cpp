@@ -23,8 +23,9 @@ using glm::vec2;
 using glm::ivec2;
 using glm::vec3;
 
-void debugDisplay(const std::vector<ivec2> nodes, const std::vector<dyb::WallRect> walls,
+void findPathDebugDisplay(const std::vector<ivec2> & nodes, const std::vector<dyb::WallRect> & walls,
     const dyb::Graph & graph, dyb::Window & win);
+void voronoiDebugDisplay(const dyb::VoronoiDiagram & vd, const std::vector<ivec2> & nodes, dyb::Window & win);
 
 int main()
 {
@@ -60,24 +61,10 @@ int main()
         ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()),
         voronoiXML, mapName);*/
 
-    //findPathDebugDisplay(nodes, walls, graph, win);
+    findPathDebugDisplay(nodes, walls, graph, win);
     dyb::VoronoiDiagram vd(nodes, 
         ivec2(map.GetWidth() * map.GetTileWidth(), map.GetHeight() * map.GetTileHeight()));
-    auto & points = vd.convexPoints;
-    for (int i = 0; i < vd.getConvexNum(); ++i)
-    {
-        //auto & convex = vd.getConvex(i);
-        auto & convex = vd.convexPointIndexArray[i];
-        auto it = convex.loop_begin();
-        auto next = it; ++next;
-        do
-        {
-            win.getScreenManager()->drawLine(points[*it], points[*next], vec3(1, 0, 0));
-            ++it; ++next;
-        } while (it != convex.loop_end());
-        win.getScreenManager()->drawPoint(nodes[i], vec3(0, 0, 1));
-    }
-    cout << vd.convexPoints.size() << endl;
+    voronoiDebugDisplay(vd, nodes, win);
     win.runLoop();
 
     return 0;
@@ -95,7 +82,7 @@ void drawAARect(dyb::Window & win, const ivec2 & leftTop, const ivec2 & rightBot
     sm->drawLine(rightBottom, rightTop, rgb);
 }
 
-void findPathDebugDisplay(const dyb::vector<ivec2> & nodes, const std::vector<dyb::WallRect> walls, 
+void findPathDebugDisplay(const std::vector<ivec2> & nodes, const std::vector<dyb::WallRect> & walls, 
     const dyb::Graph & graph, dyb::Window & win)
 {
     const vec3 red(1, 0, 0);
@@ -124,7 +111,23 @@ void findPathDebugDisplay(const dyb::vector<ivec2> & nodes, const std::vector<dy
         const ivec2 & currNode = nodes[dij.getPathResult(11)[curr]];
         win.getScreenManager()->drawLine(preNode, currNode, vec3(0, 1, 0));
     }
+}
 
-    win.runLoop();
+void voronoiDebugDisplay(const dyb::VoronoiDiagram & vd, const std::vector<ivec2> & nodes, dyb::Window & win)
+{
+    auto & points = vd.getConvexPoints();
+    for (int i = 0; i < vd.getConvexNum(); ++i)
+    {
+        //auto & convex = vd.getConvex(i);
+        auto & convex = vd.getConvex(i);
+        auto it = convex.loop_begin();
+        auto next = it; ++next;
+        do
+        {
+            win.getScreenManager()->drawLine(points[*it], points[*next], vec3(1, 1, 0));
+            ++it; ++next;
+        } while (it != convex.loop_end());
+        win.getScreenManager()->drawPoint(nodes[i], vec3(0, 0, 1));
+    }
 }
 

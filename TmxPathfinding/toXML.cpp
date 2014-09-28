@@ -93,7 +93,6 @@ namespace dyb
             auto next = firstIt; ++next;
             do
             {
-                cout << (*firstIt).x << ' ' << (*firstIt).y << endl;
                 ++firstIt;
                 ++next;
             } while (firstIt != convex.loop_end());

@@ -22,11 +22,9 @@ namespace dyb
     {
     public:
         VoronoiDiagram(const std::vector<glm::ivec2> & _nodes, const glm::ivec2 & _mapSize);
-        const circular_list<glm::vec2> & getConvex(int node) const;
+        const circular_list<int> & getConvex(int node) const;
         int getConvexNum() const { return convexArray.size(); }
-
-        std::vector<circular_list<int>> convexPointIndexArray;
-        std::vector<glm::ivec2> convexPoints;
+        const std::vector<glm::ivec2> getConvexPoints() const{ return convexPoints; }
 
     private:
         void construct();
@@ -35,6 +33,10 @@ namespace dyb
 
         std::vector<circular_list<glm::vec2>> convexArray;
         std::vector<glm::ivec2> nodes;
+
+        std::vector<circular_list<int>> convexPointIndexArray;
+        std::vector<glm::ivec2> convexPoints;
+
         glm::ivec2 mapSize;
     };
 

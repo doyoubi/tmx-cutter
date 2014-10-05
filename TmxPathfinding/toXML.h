@@ -8,6 +8,7 @@
 #include "tmxWall.h"
 #include "DijkstraAlgorithm.h"
 #include "VoronoiDiagram.h"
+#include "PointLocation.h"
 
 namespace dyb
 {
@@ -19,6 +20,8 @@ namespace dyb
     void writeEdgeXML(const Graph & graph, const string & outputXMLName, const string & mapName);
     void writePathXML(dyb::DijkstraAlgorithm & dij, const string & outputXMLName, const string & mapName);
     void writeVoronoiXML(const dyb::VoronoiDiagram & vd, const ivec2 & mapSize,
+        const string & outputXMLName, const string & mapName);
+    void writeCellColumns(const dyb::PointLocation & pl,
         const string & outputXMLName, const string & mapName);
 
 }

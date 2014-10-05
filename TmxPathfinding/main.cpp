@@ -42,6 +42,7 @@ int main()
     const string edgeXML = "resources/edge.xml";
     const string pathXML = "resources/path.xml";
     const string voronoiXML = "resources/voronoi.xml";
+    const string cellColumnXML = "resources/cellColumn.xml";
     const string mapName = "road1";
 
     Tmx::Map map;
@@ -70,11 +71,9 @@ int main()
     dyb::writePathXML(dij, pathXML, mapName);
     dyb::VoronoiDiagram vd(nodes, mapSize);
     dyb::writeVoronoiXML(vd, mapSize, voronoiXML, mapName);
-
-    /*findPathDebugDisplay(nodes, walls, graph, win);
-    voronoiDebugDisplay(vd, nodes, win);*/
     dyb::PointLocation pl(vd);
-    pointLocationDebugDisplay(pl, nodes, win);
+    dyb::writeCellColumns(pl, cellColumnXML, mapName);
+    //pointLocationDebugDisplay(pl, nodes, win);
     
     win.runLoop();
 
@@ -157,7 +156,7 @@ void pointLocationDebugDisplay(const dyb::PointLocation & pl,
     win.getScreenManager()->drawLine(
     ivec2(j, 0), ivec2(j, win.getScreenManager()->getHeight()-1), vec3(0, 0, 1)
     );}*/
-    for (auto l : pl.lineSegments)
+    for (auto l : pl.getLineSegments())
     {
         win.getScreenManager()->drawLine(l.p1, l.p2, vec3(1, 0, 0));
     }

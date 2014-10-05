@@ -126,4 +126,46 @@ namespace dyb
         doc.SaveFile(outputXMLName.c_str());
     }
 
+    void writeCellColumns(const dyb::PointLocation & pl,
+        const string & outputXMLName, const string & mapName)
+    {
+        const vector<CellColumn> & cls = pl.getCellColumns();
+        const vector<Line> & lines = pl.getLines();
+
+        XMLDocument doc;
+        XMLDeclaration * declaration = doc.NewDeclaration();
+        doc.LinkEndChild(declaration);
+        XMLElement * root = doc.NewElement("PointLocation");
+        doc.LinkEndChild(root);
+        root->SetAttribute("mapName", mapName.c_str());
+
+        root->SetAttribute("CellColumnNumber", cls.size());
+        for (auto & cl : cls)
+        {
+            XMLElement * cellColumn = doc.NewElement("CellColumn");
+            root->LinkEndChild(cellColumn);
+            cellColumn->SetAttribute("leftBoundX", cl.leftBound);
+            cellColumn->SetAttribute("CellNumber", cl.cells.size());
+            for (auto & c : cl.cells)
+            {
+                XMLElement * cell = doc.NewElement("Cell");
+                cellColumn->LinkEndChild(cell);
+                cell->SetAttribute("siteIndex", c.convexIndex);
+                cell->SetAttribute("LineIndex", c.lineIndex);
+            }
+        }
+        XMLElement * lineBuf = doc.NewElement("LineBuf");
+        root->LinkEndChild(lineBuf);
+        lineBuf->SetAttribute("LineNumber", lines.size());
+        for (auto & l : lines)
+        {
+            XMLElement * line = doc.NewElement("Line");
+            lineBuf->LinkEndChild(line);
+            line->SetAttribute("a", l.a);
+            line->SetAttribute("b", l.b);
+            line->SetAttribute("c", l.c);
+        }
+        doc.SaveFile(outputXMLName.c_str());
+    }
+
 }

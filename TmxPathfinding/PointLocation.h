@@ -23,12 +23,17 @@ namespace dyb
         int leftBound;
     };
 
-    struct PointLocation
+    class PointLocation
     {
+    public:
         PointLocation(const VoronoiDiagram & voronoiDiagram);
         // return index of corresponding convex, which is also the index of corresponding site
         int locatePoint(glm::ivec2) const; 
+        const vector<CellColumn> & getCellColumns() const { return cellColumns; }
+        const vector<LineSegment> & getLineSegments() const { return lineSegments; }
+        const vector<Line> & getLines() const { return lines; }
 
+    private:
         vector<Line> lines;
         vector<LineSegment> lineSegments;
         vector<CellColumn> cellColumns;

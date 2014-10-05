@@ -26,7 +26,8 @@ namespace dyb
     struct PointLocation
     {
         PointLocation(const VoronoiDiagram & voronoiDiagram);
-        int locatePoint(glm::ivec2) const;
+        // return index of corresponding convex, which is also the index of corresponding site
+        int locatePoint(glm::ivec2) const; 
 
         vector<Line> lines;
         vector<LineSegment> lineSegments;

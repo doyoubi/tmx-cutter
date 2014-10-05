@@ -29,6 +29,9 @@ using dyb::debugCheck;
 void findPathDebugDisplay(const std::vector<ivec2> & nodes, const std::vector<dyb::WallRect> & walls,
     const dyb::Graph & graph, dyb::Window & win);
 void voronoiDebugDisplay(const dyb::VoronoiDiagram & vd, const std::vector<ivec2> & nodes, dyb::Window & win);
+void pointLocationDebugDisplay(const dyb::PointLocation & pl,
+    const std::vector<ivec2> & nodes,
+    dyb::Window & win);
 
 int main()
 {
@@ -71,22 +74,8 @@ int main()
     /*findPathDebugDisplay(nodes, walls, graph, win);
     voronoiDebugDisplay(vd, nodes, win);*/
     dyb::PointLocation pl(vd);
-    for (auto l : pl.lineSegments)
-    {
-        win.getScreenManager()->drawLine(l.p1, l.p2, vec3(1, 0, 0));
-    }
-    cout << "enter cell column index: ";
-    int k; std::cin >> k;
-    int j = pl.cellColumns[k].leftBound;
-    for (auto & c : pl.cellColumns[k].cells)
-    {
-        int l = c.lineIndex;
-        auto line = pl.lineSegments[l];
-        win.getScreenManager()->drawLine(line.p1, line.p2, vec3(0, 1, 0));
-        win.getScreenManager()->drawLine(
-            ivec2(j, 0), ivec2(j, 639), vec3(0, 0, 1)
-            );
-    }
+    pointLocationDebugDisplay(pl, nodes, win);
+    
     win.runLoop();
 
     return 0;
@@ -153,3 +142,30 @@ void voronoiDebugDisplay(const dyb::VoronoiDiagram & vd, const std::vector<ivec2
     }
 }
 
+void pointLocationDebugDisplay(const dyb::PointLocation & pl,
+    const std::vector<ivec2> & nodes,
+    dyb::Window & win)
+{
+    /*cout << "enter cell column index: ";
+    int k; std::cin >> k;
+    int j = pl.cellColumns[k].leftBound;
+    for (auto & c : pl.cellColumns[k].cells)
+    {
+    int l = c.lineIndex;
+    auto line = pl.lineSegments[l];
+    win.getScreenManager()->drawLine(line.p1, line.p2, vec3(0, 1, 0));
+    win.getScreenManager()->drawLine(
+    ivec2(j, 0), ivec2(j, win.getScreenManager()->getHeight()-1), vec3(0, 0, 1)
+    );}*/
+    for (auto l : pl.lineSegments)
+    {
+        win.getScreenManager()->drawLine(l.p1, l.p2, vec3(1, 0, 0));
+    }
+    win.setMouseButtonFunc([&](int x, int y){
+        win.getScreenManager()->drawPoint(ivec2(x, y), vec3(1, 1, 0));
+        int i = pl.locatePoint(ivec2(x, y));
+        ivec2 n = nodes[i];
+        cout << n.x << ' ' << n.y << endl;
+        win.getScreenManager()->drawPoint(n, vec3(0, 1, 0));
+    });
+}

@@ -67,7 +67,7 @@ namespace dyb
             auto y = [this](float x, int line) -> float {
                 auto & l = lineSegments[line];
                 return float(l.p2.y - l.p1.y) / float(l.p2.x - l.p1.x) * (x - l.p1.x) + l.p1.y;
-            }; // find y for a given line segment
+            }; // find y for a given line segment and x
             for (int l : addList[x])
             {
                 auto it = std::lower_bound(begin(columnLine), end(columnLine), l,
@@ -99,6 +99,27 @@ namespace dyb
 
     int PointLocation::locatePoint(ivec2 point) const
     {
+        auto y = [this](float x, int line) -> float {
+            auto & l = lineSegments[line];
+            return float(l.p2.y - l.p1.y) / float(l.p2.x - l.p1.x) * (x - l.p1.x) + l.p1.y;
+        }; // find y for a given line segment and x
+
+        auto i = std::upper_bound(begin(cellColumns), end(cellColumns), point.x,
+            [](int x, const CellColumn & lhs){
+            return x < lhs.leftBound;
+        });
+        // what we find is not i, but --i
+        const CellColumn & cl = cellColumns[i - begin(cellColumns) - 1];
+        // begin(cellColumns)->leftBound is always 0, so when using upper_bound to find i,
+        // it should never be the first one
+
+        auto j = std::upper_bound(begin(cl.cells), end(cl.cells), point.y,
+            [&](int pointY, const Cell & c){
+            return pointY < y(point.x, c.lineIndex);
+        });
+        // what we find is not j, but --j
+        const Cell & c = cl.cells[j - begin(cl.cells) - 1];
+        return c.convexIndex;
     }
 
 }

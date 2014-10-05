@@ -16,6 +16,7 @@
 #include "tmxObjNode.h"
 #include "intersect.h"
 #include "toXML.h"
+#include "PointLocation.h"
 using std::cout;
 using std::endl;
 using std::string;
@@ -67,8 +68,25 @@ int main()
     dyb::VoronoiDiagram vd(nodes, mapSize);
     dyb::writeVoronoiXML(vd, mapSize, voronoiXML, mapName);
 
-    findPathDebugDisplay(nodes, walls, graph, win);
-    voronoiDebugDisplay(vd, nodes, win);
+    /*findPathDebugDisplay(nodes, walls, graph, win);
+    voronoiDebugDisplay(vd, nodes, win);*/
+    dyb::PointLocation pl(vd);
+    for (auto l : pl.lineSegments)
+    {
+        win.getScreenManager()->drawLine(l.p1, l.p2, vec3(1, 0, 0));
+    }
+    cout << "enter cell column index: ";
+    int k; std::cin >> k;
+    int j = pl.cellColumns[k].leftBound;
+    for (auto & c : pl.cellColumns[k].cells)
+    {
+        int l = c.lineIndex;
+        auto line = pl.lineSegments[l];
+        win.getScreenManager()->drawLine(line.p1, line.p2, vec3(0, 1, 0));
+        win.getScreenManager()->drawLine(
+            ivec2(j, 0), ivec2(j, 639), vec3(0, 0, 1)
+            );
+    }
     win.runLoop();
 
     return 0;

@@ -16,7 +16,7 @@ namespace dyb
             for (int j = i+1; j < int(nodes.size()); j++)
             {
                 if (std::any_of(begin(rects), end(rects), [&nodes, i, j](const WallRect & r){
-                    return intersect( r, Line{nodes[i], nodes[j]} );
+                    return intersect( r, LineSegment{nodes[i], nodes[j]} );
                 }))
                     continue;
                 glm::vec2 delta = nodes[i] - nodes[j];
@@ -28,24 +28,24 @@ namespace dyb
         return g;
     }
 
-    bool intersect(const WallRect & rect, const Line & line)
+    bool intersect(const WallRect & rect, const LineSegment & line)
     {
         if (insideRect(rect, line.p1) || insideRect(rect, line.p2))
             return true;
         const ivec2 leftBottom = rect.leftBottom();
         const ivec2 rightTop = rect.rightTop();
-        Line rectEdges[4] = {
-            Line{ rect.leftTop, leftBottom },
-            Line{ rect.leftTop, rightTop },
-            Line{ rect.rightBottom, leftBottom },
-            Line{ rect.rightBottom, rightTop },
+        LineSegment rectEdges[4] = {
+            LineSegment{ rect.leftTop, leftBottom },
+            LineSegment{ rect.leftTop, rightTop },
+            LineSegment{ rect.rightBottom, leftBottom },
+            LineSegment{ rect.rightBottom, rightTop },
         };
-        return std::any_of(std::begin(rectEdges), std::end(rectEdges), [&line](const Line & edge){
+        return std::any_of(std::begin(rectEdges), std::end(rectEdges), [&line](const LineSegment & edge){
             return intersect(edge, line);
         });
     }
 
-    bool intersect(const Line & aaLine, const Line & line)
+    bool intersect(const LineSegment & aaLine, const LineSegment & line)
     {
         ivec2 a = line.p1, b = line.p2;
         int m, c, d;
@@ -65,7 +65,7 @@ namespace dyb
         }
         else
         {
-            ERRORMSG("intersect(const Line & aaLine, const Line & line) require aaLine to be axis aligned");
+            ERRORMSG("intersect(const LineSegment & aaLine, const LineSegment & line) require aaLine to be axis aligned");
         }
         if ((a.x - m)*(b.x - m) > 0) return false;
         float t = float(m - b.x) / float(a.x - b.x);

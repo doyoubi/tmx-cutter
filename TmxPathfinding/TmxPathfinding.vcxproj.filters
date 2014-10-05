@@ -54,6 +54,12 @@
     <ClInclude Include="VoronoiDiagram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PointLocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -81,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VoronoiDiagram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLocation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

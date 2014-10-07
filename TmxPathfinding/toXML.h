@@ -23,6 +23,15 @@ namespace dyb
         const string & outputXMLName, const string & mapName);
     void writeCellColumns(const dyb::PointLocation & pl,
         const string & outputXMLName, const string & mapName);
+    void writePathInfoXML(const string & mapName, const ivec2 & mapSize, const string & outputXML,
+        const string & tmxFile,
+        const string & objectGroupName,
+        const string & nodePostionXML,
+        const string & edgeXML,
+        const string & pathXML,
+        const string & voronoiXML,
+        const string & cellColumnXML
+        );
 
 }
 

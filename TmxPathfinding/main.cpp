@@ -43,6 +43,7 @@ int main()
     const string pathXML = "resources/path.xml";
     const string voronoiXML = "resources/voronoi.xml";
     const string cellColumnXML = "resources/cellColumn.xml";
+    const string pathInfoXML = "resources/pathInfo.xml";
     const string mapName = "road1";
 
     Tmx::Map map;
@@ -73,7 +74,8 @@ int main()
     dyb::writeVoronoiXML(vd, mapSize, voronoiXML, mapName);
     dyb::PointLocation pl(vd);
     dyb::writeCellColumns(pl, cellColumnXML, mapName);
-    //pointLocationDebugDisplay(pl, nodes, win);
+    dyb::writePathInfoXML(mapName, mapSize, pathInfoXML,
+        tmxFile, objectGroupName, nodePostionXML, edgeXML, pathXML, voronoiXML, cellColumnXML);
     
     win.runLoop();
 

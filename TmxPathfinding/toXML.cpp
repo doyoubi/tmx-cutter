@@ -1,4 +1,5 @@
 #include <numeric>
+#include <initializer_list>
 
 #include "glm/glm.hpp"
 #include "tinyxml2.h"
@@ -130,7 +131,7 @@ namespace dyb
         const string & outputXMLName, const string & mapName)
     {
         const vector<CellColumn> & cls = pl.getCellColumns();
-        const vector<Line> & lines = pl.getLines();
+        const vector<LineSegment> & lines = pl.getLineSegments();
 
         XMLDocument doc;
         XMLDeclaration * declaration = doc.NewDeclaration();
@@ -139,11 +140,13 @@ namespace dyb
         doc.LinkEndChild(root);
         root->SetAttribute("mapName", mapName.c_str());
 
-        root->SetAttribute("CellColumnNumber", cls.size());
+        XMLElement * cellColumnBuf = doc.NewElement("CellColumnBuf");
+        root->LinkEndChild(cellColumnBuf);
+        cellColumnBuf->SetAttribute("CellColumnNumber", cls.size());
         for (auto & cl : cls)
         {
             XMLElement * cellColumn = doc.NewElement("CellColumn");
-            root->LinkEndChild(cellColumn);
+            cellColumnBuf->LinkEndChild(cellColumn);
             cellColumn->SetAttribute("leftBoundX", cl.leftBound);
             cellColumn->SetAttribute("CellNumber", cl.cells.size());
             for (auto & c : cl.cells)
@@ -161,11 +164,47 @@ namespace dyb
         {
             XMLElement * line = doc.NewElement("Line");
             lineBuf->LinkEndChild(line);
-            line->SetAttribute("a", l.a);
-            line->SetAttribute("b", l.b);
-            line->SetAttribute("c", l.c);
+            line->SetAttribute("x1", l.p1.x);
+            line->SetAttribute("y1", l.p1.y);
+            line->SetAttribute("x2", l.p2.x);
+            line->SetAttribute("y2", l.p2.y);
         }
         doc.SaveFile(outputXMLName.c_str());
+    }
+
+    void writePathInfoXML(const string & mapName, const ivec2 & mapSize, const string & outputXML,
+        const string & tmxFile,
+        const string & objectGroupName,
+        const string & nodePostionXML,
+        const string & edgeXML,
+        const string & pathXML,
+        const string & voronoiXML,
+        const string & cellColumnXML
+        )
+    {
+        XMLDocument doc;
+        XMLDeclaration * declaration = doc.NewDeclaration();
+        doc.LinkEndChild(declaration);
+        XMLElement * root = doc.NewElement("MapInfomation");
+        doc.LinkEndChild(root);
+        root->SetAttribute("mapName", mapName.c_str());
+        root->SetAttribute("mapSizeX", mapSize.x);
+        root->SetAttribute("mapSizeY", mapSize.y);
+
+        auto addChild = [&](const string & nodeName, const string & value){
+            XMLElement * node = doc.NewElement(nodeName.c_str());
+            root->LinkEndChild(node);
+            node->SetAttribute("value", value.c_str());
+        };
+        addChild("tmxFile", tmxFile);
+        addChild("objectGroupName", objectGroupName);
+        addChild("nodePostionXML", nodePostionXML);
+        addChild("edgeXML", edgeXML);
+        addChild("pathXML", pathXML);
+        addChild("voronoiXML", voronoiXML);
+        addChild("cellColumnXML", cellColumnXML);
+
+        doc.SaveFile(outputXML.c_str());
     }
 
 }

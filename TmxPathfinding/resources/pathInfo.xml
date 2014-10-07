@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MapInfomation mapName="road1" mapSizeX="512" mapSizeY="640">
+    <tmxFile value="resources/road1.tmx"/>
+    <objectGroupName value="path"/>
+    <nodePostionXML value="resources/nodePosition.xml"/>
+    <edgeXML value="resources/edge.xml"/>
+    <pathXML value="resources/path.xml"/>
+    <voronoiXML value="resources/voronoi.xml"/>
+    <cellColumnXML value="resources/cellColumn.xml"/>
+</MapInfomation>
